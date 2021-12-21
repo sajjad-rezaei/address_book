@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AddressController!{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="p-4">
+        <div class="card p-1">
+            <div class="card-header text-center">
+                Lets edit the address :)
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">
+                <div class="form-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-md-6">{{ form_row(form.firstname) }}</div>
+                                <div class="col-md-6">{{ form_row(form.lastName) }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">{{ form_row(form.fullAddress) }}</div>
+                                <div class="col-md-6">{{ form_row(form.phoneNumber) }}</div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-12">{{ form_row(form.zipCode) }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">{{ form_row(form.email) }}</div>
+                                <div class="col-md-6">{{ form_row(form.birthDay) }}</div>
+                            </div>
+
+                            <div class="col-md-12">{{ form_row(form.pic) }}</div>
+                            <div class="col-md-12">{{ form_row(form.save , { 'label': 'Update'}) }}</div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+
+
+                </div>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

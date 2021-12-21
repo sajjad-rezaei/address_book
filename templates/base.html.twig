@@ -2,18 +2,87 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        <title>{% block title %}Welcome to address book!{% endblock %}</title>
+
+
+
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+
+
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/flag-icons.min.css') }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{{ asset('assets/css/sticky-footer-navbar.css')  }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/custom.css')  }}" rel="stylesheet">
+
+
+
+
+
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{{ path('home') }}">Address Book</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('address.list') }}">Address List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('address.add') }}">Add New Address</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+
+
+
+
+    <main role="main" class="container">
+
+            {% block body %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Simple Address Book By <a href="https://sjrz.ir">Sajjad Rezaei</a> :)</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+
+    <script src="{{ asset('assets/js/popper.min.js')  }}"></script>
+
+    <script src="{{ asset('assets/js/bootstrap.min.js')  }}"></script>
+    {% block javascripts %}
+    {% endblock %}
+
+    <script src="{{ asset('assets/js/custom.js')  }}"></script>
+
     </body>
 </html>

@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}show address {{ address.firstname ~ " " ~ address.lastName }}{% endblock %}
+
+{% block body %}
+
+<div class="p-4">
+
+
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="
+                        {% if address.pic %}
+                            {{ asset("assets/uploads/") ~ address.pic }}
+                        {% else %}
+                            {{ asset("assets/images/default-profile.png")  }}
+                        {% endif %}
+                        " alt=""/>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            {{ address.firstname ~ " " ~ address.lastName }}
+                        </h5>
+
+                        <p class="proile-rating">Birthday : <span>{{ address.birthDay|date('d-m-Y') }}</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                    <a href="{{ path('address.edit',{id:address.id}) }}" class="btn btn-info profile-edit-btn">Edit Profile</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.firstname }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Last Name:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.lastName }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Birthday:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.birthDay|date('d-m-Y') }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.email }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone  Number:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.phoneNumber }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Country:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><span class="flag-icon flag-icon-{{ address.zipCode.city.country.slug|lower }}"></span> {{ address.zipCode.city.country.name }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>City:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.zipCode.city.name }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>ZipCode:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.zipCode.code }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Address:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ address.fullAddress }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+{% endblock %}

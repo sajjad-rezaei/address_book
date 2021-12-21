@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+{% endblock %}
+
+
+
+
+{% block title %}Hello AddressController!{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="p-4">
+        <div class="table-responsive">
+            <table id="address_list" class="table table-striped  " style="width:100%">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Full Address</th>
+                <th>Zip Code</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Phone Number</th>
+                <th>action</th>
+
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for address in addresses %}
+                <tr>
+
+                    <td>{{ address.firstname }}</td>
+                    <td>{{ address.lastName }}</td>
+                    <td>{{ address.fullAddress }}</td>
+                    <td>{{ address.zipCode.code }}</td>
+                    <td>{{ address.zipCode.city.name }}</td>
+                    <td><span class="flag-icon flag-icon-{{ address.zipCode.city.country.slug|lower }}"></span> {{ address.zipCode.city.country.name }}</td>
+                    <td>{{ address.phoneNumber }}</td>
+                    <td>
+                        <a href="{{ path('address.show',{id:address.id}) }}"  title="view"><i class="bi bi-eye text-success "></i></a>
+                        <i class="bi bi-trash text-danger delete" data-toggle="modal" data-target="#my-modal" data-url="{{ path('address.remove',{id:address.id}) }}"></i>
+                        <a  href="{{ path('address.edit',{id:address.id}) }}"  title="delete"><i class="bi bi-pencil-square text-info "></i></a>
+                    </td>
+
+
+
+                </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+        </div>
+
+</div>
+
+    <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content border-0">
+                <div class="modal-body p-0">
+
+                    <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                        <div class="card-header pb-0 bg-white border-0 ">
+                            <div class="row">
+                                <div class="col ml-auto"><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div>
+                            </div>
+                            <p class="font-weight-bold mb-2"> Are you sure you wanna delete this ?</p>
+                            <p class="text-muted "> This change can't not be undone!!</p>
+                        </div>
+                        <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                            <div class="row justify-content-end no-gutters">
+                                <div class="col-auto"><button type="button" class="btn btn-light text-muted" data-dismiss="modal">Cancel</button></div>
+                                <div class="col-auto"><button type="button" class="deleteAction btn btn-danger px-4" data-dismiss="modal">Delete</button></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+{% endblock %}
