@@ -18,13 +18,13 @@ $(document).ready(function (){
             url : url,
             type : 'POST',
             success : function(data) {
-                console.log(data)
-                // window.location.reload();
+
+                window.location.reload();
             },
             error : function(request,error)
             {
-                console.log(error)
-                // window.location.reload();
+
+                window.location.reload();
             }
         });
     });
