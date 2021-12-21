@@ -2,7 +2,7 @@
 
 This is a sample address book using symfony 3.4.49 and Sqlite
 
-##Technologies:
+## Technologies:
  -  symfony 3.4.49
  -  Sqlite
  -  php7.4
@@ -10,7 +10,7 @@ This is a sample address book using symfony 3.4.49 and Sqlite
   - JQuery
   - Data table
 
-##How to use:
+## How to use:
 
   - download the git repository
   - open your terminal in project directory
